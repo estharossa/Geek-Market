@@ -45,5 +45,9 @@ export class ProductListService {
     array.sort((a, b) => (a.price > b.price) ? 1 : -1);
     return of(array);
   }
+  sortByPriceDesc(array: Product[]): Observable<Product[]> {
+    array.sort((a, b) => (a.price < b.price) ? 1 : -1);
+    return of(array);
+  }
 
 }
