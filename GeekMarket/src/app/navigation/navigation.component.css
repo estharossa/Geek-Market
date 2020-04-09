@@ -38,12 +38,12 @@
 .navigation_search{
   display: flex;
   align-items: center;
+  align-content: center;
 }
 
 .navigation_search a{
   display: flex;
   align-items: center;
-  align-content: center;
 }
 
 .navigation_search input{
@@ -52,7 +52,9 @@
   border-radius: 5px;
 }
 
-.navigation_search h4{
+.navigation_search h4
+{
+  margin: 0;
   font-weight: normal;
 }
 
