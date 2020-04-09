@@ -2,6 +2,27 @@
 .products_container{
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.products_container .button{
+  width: 90%;
+  background: white;
+  margin: 0;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.products_container .button button:hover{
+  background: #9E0000;
+  transition: 0.3s;
+}
+
+.products_container .button button{
+  padding: 8px;
+  margin-right: 10px;
 }
 
 .products{

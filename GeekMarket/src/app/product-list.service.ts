@@ -29,7 +29,7 @@ export class ProductListService {
   getProduct(): Observable<any[]> {
     return of(this.product);
   }
-  getCategoryProducts(category: Category): Observable<any[]> {
+  getCategoryProducts(category: Category): Observable<Product[]> {
     if (category.id === 1) {
       return of(this.product);
     }
@@ -40,6 +40,10 @@ export class ProductListService {
       }
     });
     return of(categoryProducts);
+  }
+  sortByPriceAsc(array: Product[]): Observable<Product[]> {
+    array.sort((a, b) => (a.price > b.price) ? 1 : -1);
+    return of(array);
   }
 
 }
