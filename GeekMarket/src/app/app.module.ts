@@ -16,6 +16,7 @@ import { TestComponent } from './test/test.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import {SortByPipe} from './product-list.service';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { AboutComponent } from './about/about.component';
     TestComponent,
     FooterComponent,
     AboutComponent,
+    SortByPipe,
   ],
   bootstrap: [ AppComponent ],
   entryComponents: [TestComponent]
