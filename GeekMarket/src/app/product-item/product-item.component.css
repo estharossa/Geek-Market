@@ -1,0 +1,38 @@
+.product_info_container{
+  padding: 25px;
+}
+
+.product_info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_item{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product_item img{
+  width: 100%;
+  max-width: 256px;
+  height: auto;
+}
+
+.product_item button{
+  height: auto;
+  width: 80%;
+  display: block;
+  padding: 5px 15px;
+  border: 1px solid black;
+  background: white;
+  margin: 10px 0px;
+}
+
+.product_item input{
+  /*width: 100%;*/
+  padding: 5px 15px;
+}

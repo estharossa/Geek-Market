@@ -1,0 +1,10 @@
+.about_container{
+  padding: 25px;
+  min-height: auto;
+}
+
+.about{
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+}
