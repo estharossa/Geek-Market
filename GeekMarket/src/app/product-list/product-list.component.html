@@ -1,5 +1,9 @@
 <div class="products_container">
   <div class="products">
+    <div class="button">
+      <button>Сортировать по возрастанию</button>
+      <button>Сортировать по убыванию</button>
+    </div>
     <div *ngFor="let product of products, index as productId" class="product_item">
       <img src="{{product.image}}" alt="">
       <h4>
