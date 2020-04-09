@@ -5,7 +5,10 @@
       <a [routerLink]="'/about'">О нас</a>
     </div>
     <div class="navigation_search">
-      <input type="text" placeholder="Поиск...">
+      <form (submit)="onSubmit(text.value)">
+       <input type="text" placeholder="Поиск..." #text>
+      </form>
+
       <a routerLink="/cart" class="button fancy-button">
         <i class="material-icons">shopping_cart</i>
         <h4>КОРЗИНА</h4>

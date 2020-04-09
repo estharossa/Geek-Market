@@ -37,6 +37,7 @@ import { InMemoryDataService } from './in-memory-data.service';
       {path: 'products/:productId', component: ProductItemComponent},
       {path: 'about', component: AboutComponent},
       {path: 'cart', component: CartComponent},
+      {path: 'products', component: ProductListComponent},
     ]),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -60,4 +61,4 @@ import { InMemoryDataService } from './in-memory-data.service';
 })
 export class AppModule { }
 
-//asikgay
+

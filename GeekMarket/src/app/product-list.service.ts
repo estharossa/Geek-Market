@@ -33,7 +33,7 @@ export class ProductListService {
   }
   getCategoryProducts(category: Category): Observable<Product[]> {
     if (category.id === 1) {
-      return of(this.product);
+      return this.getProduct();
     }
     const categoryProducts = [];
     this.product.forEach(value => {
