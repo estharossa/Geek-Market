@@ -7,7 +7,9 @@
           <h4 [title]="category.name">{{category.name}}</h4>
 
       </div>
-      <input [(ngModel)]="selectedCategory" placeholder="Название категории"/>
+      <div class="edit_category">
+        <input [(ngModel)]="selectedCategory" placeholder="Название категории"/>
+      </div>
     </div>
   </div>
   <div class="products_container">
