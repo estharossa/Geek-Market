@@ -21,8 +21,9 @@
 }
 
 .products_container .button button{
-  padding: 8px;
+  padding: 10px;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .products{
