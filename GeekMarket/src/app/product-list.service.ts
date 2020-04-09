@@ -5,7 +5,9 @@ import {Category} from './interfaces/category';
 import {Product} from './interfaces/product';
 import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy } from 'lodash';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Pipe({ name: 'sortBy' })
+
 
 export class SortByPipe implements PipeTransform {
 
@@ -24,10 +26,10 @@ export class SortByPipe implements PipeTransform {
 })
 export class ProductListService {
   product: Product[] =  products;
-
-  constructor() { }
-  getProduct(): Observable<any[]> {
-    return of(this.product);
+  private productsUrl = 'api/products';
+  constructor(private http: HttpClient) { }
+  getProduct(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl);
   }
   getCategoryProducts(category: Category): Observable<Product[]> {
     if (category.id === 1) {

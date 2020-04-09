@@ -17,11 +17,18 @@ import {MatButtonModule} from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import {SortByPipe} from './product-list.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
+
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
     ReactiveFormsModule,
     MatDialogModule,
     RouterModule.forRoot([
