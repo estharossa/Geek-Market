@@ -58,7 +58,7 @@ class ProductSerializer2(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'image', 'price', 'category_id',)
 
 
-class CompanyWithVacanciesSerializer(serializers.ModelSerializer):
+class CategoryWithProductsSerializer(serializers.ModelSerializer):
     # products = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # products = serializers.StringRelatedField(many=True, read_only=True)
     products = ProductSerializer(many=True, read_only=True)
