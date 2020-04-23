@@ -17,6 +17,7 @@ def category_list(request):
         return JsonResponse(category.to_json())
 
 
+@csrf_exempt
 def category_detail(request, category_id):
     try:
         category = Category.objects.get(id=category_id)
@@ -25,12 +26,14 @@ def category_detail(request, category_id):
     return JsonResponse(category.to_json())
 
 
+@csrf_exempt
 def product_list(request):
     products = Product.objects.all()
     products_json = [product.to_json() for product in products]
     return JsonResponse(products_json, safe=False)
 
 
+@csrf_exempt
 def product_detail(request, product_id):
     try:
         product = Product.objects.get(id=product_id)
@@ -40,6 +43,7 @@ def product_detail(request, product_id):
     return JsonResponse(product.to_json())
 
 
+@csrf_exempt
 def category_vacancies(request, category_id):
     try:
         category = Category.objects.get(id=category_id)
@@ -50,6 +54,7 @@ def category_vacancies(request, category_id):
     return JsonResponse(products_json, safe=False)
 
 
+@csrf_exempt
 def top_ten_products(request):
     products = Product.objects.order_by('-price')[:5]
     products_json = [product.to_json() for product in products]
