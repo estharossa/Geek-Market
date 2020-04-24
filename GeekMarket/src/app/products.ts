@@ -7,7 +7,7 @@ export const products: Product[] = [
     price: 5000,
     description: '',
     image: '../assets/products/1.png',
-    category: 'Подушки докимакура'
+    category: 'Дом'
   },
   {
     id: 2,

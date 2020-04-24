@@ -25,23 +25,24 @@ export class SortByPipe implements PipeTransform {
   providedIn: 'root'
 })
 export class ProductListService {
-  product: Product[] =  products;
+  // product: Product[] =  products;
   private productsUrl = 'api/products';
+  BASE_URL = 'http://127.0.0.1:8000';
+
   constructor(private http: HttpClient) { }
-  getProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl);
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.BASE_URL}/api/products/`);
   }
-  getCategoryProducts(category: Category): Observable<Product[]> {
-    if (category.id === 1) {
-      return this.getProduct();
+  getProduct(id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.BASE_URL}/api/products/${id}`);
+  }
+  getCategoryProducts2(category: number): Observable<Product[]> {
+    console.log('service category get:', category);
+    if (category === 1) {
+      return this.http.get<Product[]>(`${this.BASE_URL}/api/products/`);
+    } else {
+      return this.http.get<Product[]>(`${this.BASE_URL}/api/categories/${category}/products`);
     }
-    const categoryProducts = [];
-    this.product.forEach(value => {
-      if (value.category === category.name) {
-        categoryProducts.push(value);
-      }
-    });
-    return of(categoryProducts);
   }
   sortByPriceAsc(array: Product[]): Observable<Product[]> {
     array.sort((a, b) => (a.price > b.price) ? 1 : -1);

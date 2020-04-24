@@ -3,6 +3,7 @@ import {Product} from '../interfaces/product';
 import {ProductListService} from '../product-list.service';
 import {ProductItemComponent} from '../product-item/product-item.component';
 import {Observable} from 'rxjs';
+import {CategoryService} from '../category.service';
 
 @Component({
   selector: 'app-navigation',
@@ -13,14 +14,25 @@ export class NavigationComponent implements OnInit {
   products: Product[];
   isFound: boolean;
   id;
-  constructor(private service: ProductListService) {
+  title = 'servicesGroup2';
+
+  logged = false;
+
+  username = '';
+  password = '';
+  constructor(private service: ProductListService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
-    this.getProduct();
+    this.getProducts();
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.logged = true;
+    }
   }
-  getProduct() {
-    const a = this.service.getProduct();
+  getProducts() {
+    const a = this.service.getAllProducts();
     a.subscribe(cat => this.products = cat );
   }
   onSubmit(text: string) {
@@ -29,7 +41,7 @@ export class NavigationComponent implements OnInit {
           this.isFound = true;
           this.id = value.id;
           console.log(this.isFound);
-          window.alert('Имя товара: ' + this.products[this.id - 1].name + '\n' + 'Цена: ' + this.products[this.id].price);
+          window.alert('Имя товара: ' + this.products[this.id - 1].name + '\n' + 'Цена: ' + this.products[this.id - 1].price);
         } else {
             this.isFound = false;
           }
@@ -38,4 +50,22 @@ export class NavigationComponent implements OnInit {
       if (this.isFound) {
       }
   }
+  login(){
+    this.categoryService.login(this.username, this.password)
+      .subscribe(res => {
+
+        localStorage.setItem('token', res.token);
+
+        this.logged = true;
+
+        this.username = '';
+        this.password = '';
+      })
+  }
+
+  logout(){
+    localStorage.clear();
+    this.logged = false;
+  }
+
 }

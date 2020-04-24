@@ -8,7 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {ProductItemComponent} from './product-item/product-item.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -19,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import {SortByPipe} from './product-list.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import {AuthInterceptor} from './auth.interceptor';
 
 
 
@@ -26,9 +27,9 @@ import { InMemoryDataService } from './in-memory-data.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
     ReactiveFormsModule,
     MatDialogModule,
     RouterModule.forRoot([
@@ -55,6 +56,13 @@ import { InMemoryDataService } from './in-memory-data.service';
     FooterComponent,
     AboutComponent,
     SortByPipe,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [ AppComponent ],
   entryComponents: [TestComponent]

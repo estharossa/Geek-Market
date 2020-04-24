@@ -5,7 +5,7 @@ import {Category} from '../interfaces/category';
 import {Subject} from 'rxjs';
 import {CategoryService} from '../category.service';
 import {Product} from '../interfaces/product';
-
+import {categories} from '../categories';
 
 
 @Component({
@@ -17,30 +17,29 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<undefined>();
   products: Product[];
   category: Category;
-  categories: Category[];
-  params;
+  categories;
+  params: number;
   constructor(
     private route: ActivatedRoute,
     private service: ProductListService,
     private categoryService: CategoryService
   ) {
-    this.getCategories()
+    this.getCategories();
     this.route.paramMap.subscribe(params => {
-      this.params = params.get('categoryId')
-      this.category = this.categories[+params.get('categoryId')];
+      this.params = +params.get('categoryId');
+      this.params = this.params + 1;
+      console.log(this.params);
+      this.category = categories[+params.get('categoryId')];
+      console.log('category:', this.category);
       this.ngOnInit();
     });
   }
 
   ngOnInit(): void {
-    this.getCategoryProducts(this.category);
+    this.getCategoryProducts2(this.params);
   }
-  getProduct() {
-    const a = this.service.getProduct();
-    a.subscribe(cat => this.products = cat );
-  }
-  getCategoryProducts(category: Category) {
-    const a = this.service.getCategoryProducts(category);
+  getCategoryProducts2(category: number) {
+    const a = this.service.getCategoryProducts2(category);
     a.subscribe(cat => this.products = cat );
   }
   getCategories() {
