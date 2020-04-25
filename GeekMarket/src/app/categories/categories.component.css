@@ -5,6 +5,21 @@
   min-height: 100%;
 }
 
+
+.logout_btn{
+  padding: 10px;
+  background: #9E0000;
+  color: white;
+  border-radius: 10px;
+  width: 30%;
+}
+
+.auth{
+  background: white;
+  opacity: 0.9;
+  padding: 10px;
+}
+
 .products_container{
   width: 80%;
 }

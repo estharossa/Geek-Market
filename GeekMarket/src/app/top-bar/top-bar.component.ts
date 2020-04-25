@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {TestComponent} from '../test/test.component';
+import {ProductListService} from '../product-list.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,16 +9,13 @@ import {TestComponent} from '../test/test.component';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-
   constructor(public dialog: MatDialog) { }
-
   public openModal() {
     this.dialog.open(TestComponent, {data: {name: 'Номер телефона:'}});
   }
 
   ngOnInit() {
   }
-
 }
 
 

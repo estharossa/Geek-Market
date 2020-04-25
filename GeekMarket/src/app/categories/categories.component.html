@@ -1,6 +1,13 @@
 <div class="wrapper">
   <div class="categories">
+    <div class="auth" *ngIf="!logged">
+      <p>Username: <input type="text" [(ngModel)]="username"></p>
+      <p>Password: <input type="text" [(ngModel)]="password"></p>
+      <button (click)="login()" class="logout_btn">Login</button>
+    </div>
+
     <div class="categories_container">
+      <button *ngIf="logged" (click)="logout()" class="logout_btn">Logout</button>
       <h4>Категории</h4>
       <div *ngFor="let category of categories, index as categoryId" class="category_item" [routerLink]="['/category/' + categoryId + '/products']">
 
@@ -12,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class="products_container">
+  <div class="products_container" *ngIf="logged">
     <app-product-list></app-product-list>
   </div>
 </div>

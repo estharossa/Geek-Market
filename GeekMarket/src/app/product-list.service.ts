@@ -6,6 +6,7 @@ import {Product} from './interfaces/product';
 import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy } from 'lodash';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {LoginResponse} from './interfaces/user';
 @Pipe({ name: 'sortBy' })
 
 
@@ -51,6 +52,12 @@ export class ProductListService {
   sortByPriceDesc(array: Product[]): Observable<Product[]> {
     array.sort((a, b) => (a.price < b.price) ? 1 : -1);
     return of(array);
+  }
+  login(username, password): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.BASE_URL}/api/login/`, {
+      username,
+      password
+    });
   }
 
 }
