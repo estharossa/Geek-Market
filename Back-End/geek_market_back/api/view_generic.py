@@ -10,7 +10,6 @@ from api.serializers import CategorySerializer2, ProductSerializer, \
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer2
-    permission_classes = (IsAuthenticated,)
 
 
 class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
