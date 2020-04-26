@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Product, Category
+from api.models import Product, Category, Phone
 
 
 class CategorySerializer(serializers.Serializer):
@@ -66,3 +66,11 @@ class CategoryWithProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'name', 'products',)
+
+
+class PhoneSerializer2(serializers.ModelSerializer):
+    number = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = Phone
+        fields =('id', 'number',)
