@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import {products} from './products';
 import {Observable, of} from 'rxjs';
 import {Category} from './interfaces/category';
-import {Product} from './interfaces/product';
+import {Product, Product1} from './interfaces/product';
 import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy } from 'lodash';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {LoginResponse} from './interfaces/user';
+import {Phone} from './interfaces/phone';
+import {catchError} from 'rxjs/operators';
 @Pipe({ name: 'sortBy' })
 
 
@@ -29,7 +31,9 @@ export class ProductListService {
   // product: Product[] =  products;
   private productsUrl = 'api/products';
   BASE_URL = 'http://127.0.0.1:8000';
-
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   constructor(private http: HttpClient) { }
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.BASE_URL}/api/products/`);
@@ -59,5 +63,10 @@ export class ProductListService {
       password
     });
   }
-
+  addPhone(phone: Phone): Observable<Phone> {
+    return this.http.post<Phone>(`${this.BASE_URL}/api/phones/`, phone, this.httpOptions);
+  }
+  addProduct(product: Product1): Observable<Product1> {
+    return this.http.post<Product1>(`${this.BASE_URL}/api/products/`, product, this.httpOptions);
+  }
 }

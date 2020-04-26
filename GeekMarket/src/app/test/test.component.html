@@ -1,8 +1,8 @@
 <p>
   {{data.name}}
-  <input type="number">
+  <input type="number" #text>
 </p>
 <div class="order_buttons">
   <button mat-raised-button (click)="close()">Закрыть</button>
-  <button mat-raised-button (click)="submit(data)">Отправить</button>
+  <button mat-raised-button (click)="submit(text.value)">Отправить</button>
 </div>

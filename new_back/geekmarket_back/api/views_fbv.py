@@ -1,8 +1,8 @@
-from api.models import Category, Product
+from api.models import Category, Product, Phone
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from api.serializers import CategorySerializer2, ProductSerializer
+from api.serializers import CategorySerializer2, ProductSerializer, PhoneSerializer2, ProductSerializer2
 
 
 @api_view(['GET', 'POST'])
@@ -52,7 +52,7 @@ def product_list(request):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductSerializer2(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -95,3 +95,19 @@ def category_product(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET', 'POST'])
+def phone_list(request):
+    if request.method == 'GET':
+        phones = Phone.objects.all()
+        serializer = PhoneSerializer2(phones, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = PhoneSerializer2(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'error': serializer.errors},
+                        status=status.HTTP_500_INTERNAL_SERVER_ERROR)

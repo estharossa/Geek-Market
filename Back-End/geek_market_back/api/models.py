@@ -28,7 +28,6 @@ class Product(models.Model):
             'category': self.category.name
         }
 
-
 class User(models.Model):
     Name = models.CharField(max_length=300)
     Surname = models.CharField(max_length=300)
@@ -44,12 +43,16 @@ class User(models.Model):
             'price': self.password
         }
 
-
-class Phone(models.Model):
-    number = models.CharField(max_length=300)
+class Admin(models.Model):
+    nickname = models.CharField(max_length=300)
+    login = models.CharField(max_length=300)
+    password = models.CharField(max_length=300)
 
     def to_json(self):
         return {
             'id': self.id,
-            'number': self.number
+            'nickname': self.nickname,
+            'login': self.login,
+            'password': self.password
         }
+

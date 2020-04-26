@@ -69,7 +69,6 @@ class CategoryWithProductsSerializer(serializers.ModelSerializer):
 
 
 class PhoneSerializer2(serializers.ModelSerializer):
-    number = serializers.CharField(write_only=True)
 
     class Meta:
         model = Phone
