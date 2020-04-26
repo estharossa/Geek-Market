@@ -1,28 +1,28 @@
 <div class="container">
   <form action="/create.component.ts">
     <label class="nazv" for="name">Название</label>
-    <input type="text" id="name" name="name" placeholder="Название продукта">
+    <input type="text" id="name" name="name" placeholder="Название продукта" #name>
 
     <label class="nazv" for="price">Цена</label>
-    <input type="text" id="price" name="lastname" placeholder="Цена продукта в тенге">
+    <input type="text" id="price" name="lastname" placeholder="Цена продукта в тенге" #price>
 
     <label class="nazv" for="category">Категория</label>
-    <select id="category" name="category">
-      <option value="ОДЕЖДА">ОДЕЖДА</option>
-      <option value="ДОМ">ДОМ</option>
-      <option value="ФИГУРКИ И ИГРУШКИ">ФИГУРКИ И ИГРУШКИ</option>
-      <option value="АКСЕССУАРЫ">АКСЕССУАРЫ</option>
-      <option value="НАСТОЛЬНЫЕ ИГРЫ">НАСТОЛЬНЫЕ ИГРЫ</option>
+    <select id="category" name="category" #category>
+      <option value="2">ОДЕЖДА</option>
+      <option value="3">ДОМ</option>
+      <option value="4">ФИГУРКИ И ИГРУШКИ</option>
+      <option value="5">АКСЕССУАРЫ</option>
+      <option value="6">НАСТОЛЬНЫЕ ИГРЫ</option>
     </select>
       <div id="import">
       <label class="nazv" for="img">Выберите фото для продукта:       </label>
-      <input type="file" id="img" name="img" accept="image/*">
+      <input type="file" id="img" name="img" accept="image/*" #image>
       </div>
 
 
     <label class="nazv" for="description">Описание</label>
-    <textarea id="description" name="description" placeholder="Описание продукта" style="height:200px"></textarea>
+    <textarea id="description" name="description" placeholder="Описание продукта" style="height:200px" #description></textarea>
 
-    <input type="submit" value="Создать">
+    <input type="submit" value="Создать" (click)="createProduct(name.value, description.value, image.value, toNum(price.value), toNum(category.value))">
   </form>
 </div>
