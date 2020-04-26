@@ -20,6 +20,7 @@ import {SortByPipe} from './product-list.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import {AuthInterceptor} from './auth.interceptor';
+import { CreateComponent } from './create/create.component';
 
 
 
@@ -32,15 +33,16 @@ import {AuthInterceptor} from './auth.interceptor';
     // ),
     ReactiveFormsModule,
     MatDialogModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', component: CategoriesComponent},
       {path: 'category/:categoryId/products', component: CategoriesComponent},
       {path: 'products/:productId', component: ProductItemComponent},
       {path: 'about', component: AboutComponent},
+      {path: 'create', component: CreateComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'products', component: ProductListComponent},
+      {path: 'products', component: ProductListComponent}
     ]),
-    BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
   ],
@@ -56,6 +58,7 @@ import {AuthInterceptor} from './auth.interceptor';
     FooterComponent,
     AboutComponent,
     SortByPipe,
+    CreateComponent,
   ],
   providers: [
     {
