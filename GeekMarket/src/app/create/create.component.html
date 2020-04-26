@@ -1,0 +1,28 @@
+<div class="container">
+  <form action="/create.component.ts">
+    <label class="nazv" for="name">Название</label>
+    <input type="text" id="name" name="name" placeholder="Название продукта">
+
+    <label class="nazv" for="price">Цена</label>
+    <input type="text" id="price" name="lastname" placeholder="Цена продукта в тенге">
+
+    <label class="nazv" for="category">Категория</label>
+    <select id="category" name="category">
+      <option value="ОДЕЖДА">ОДЕЖДА</option>
+      <option value="ДОМ">ДОМ</option>
+      <option value="ФИГУРКИ И ИГРУШКИ">ФИГУРКИ И ИГРУШКИ</option>
+      <option value="АКСЕССУАРЫ">АКСЕССУАРЫ</option>
+      <option value="НАСТОЛЬНЫЕ ИГРЫ">НАСТОЛЬНЫЕ ИГРЫ</option>
+    </select>
+      <div id="import">
+      <label class="nazv" for="img">Выберите фото для продукта:       </label>
+      <input type="file" id="img" name="img" accept="image/*">
+      </div>
+
+
+    <label class="nazv" for="description">Описание</label>
+    <textarea id="description" name="description" placeholder="Описание продукта" style="height:200px"></textarea>
+
+    <input type="submit" value="Создать">
+  </form>
+</div>
